@@ -1,0 +1,14 @@
+version: 0.0
+os: linux
+files:
+    - source: /
+      destination: /home/ec2-user
+hooks: 
+    BeforeInstall:
+     -  location: Dependency_Scripts/rmBeforeInstall.sh
+        timeout: 200
+        runas: ec2-user
+    ApplicationStart:
+     -  location: Dependency_Scripts/startApplication.sh
+        timeout: 200
+        runas: ec2-user
