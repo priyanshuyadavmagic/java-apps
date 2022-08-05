@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                git 'https://github.com/priyanshuyadavmagic/nodejs-app.git'
+                git 'https://github.com/priyanshuyadavmagic/java-apps.git'
                 sh "sudo rm /var/www/html/index.html"
                 sh "sudo cp index.html /var/www/html"
             }
