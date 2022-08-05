@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+    parameters {
+        choice(
+            name: 'Environment',
+            choices: ['dev', 'qa', 'stg', 'prod', 'destroy'],
+            description: 'Please Select env'
+        )
+    }
+    stages {
+        stage('Build') {
+            steps {
+                git 'https://github.com/priyanshuyadavmagic/nodejs-app.git'
+                sh "sudo rm /var/www/html/index.html"
+                sh "sudo cp index.html /var/www/html"
+            }
+        }
+    }
+}
