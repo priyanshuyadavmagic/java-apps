@@ -1,18 +1,9 @@
 pipeline {
-    agent any
-    parameters {
-        choice(
-            name: 'Environment',
-            choices: ['dev', 'qa', 'stg', 'prod', 'destroy'],
-            description: 'Please Select env'
-        )
-    }
+    agent { docker { image 'maven:3.8.4-openjdk-11-slim' } }
     stages {
-        stage('Build') {
+        stage('build') {
             steps {
-                git 'https://github.com/priyanshuyadavmagic/java-apps.git'
-                sh "sudo rm /var/www/html/index.html"
-                sh "sudo cp index.html /var/www/html"
+                sh 'mvn --version'
             }
         }
     }
