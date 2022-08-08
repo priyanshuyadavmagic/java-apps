@@ -1,17 +1,11 @@
 pipeline {
-    agent any
-    parameters {
-        choice(
-            name: 'Environment',
-            choices: ['dev', 'qa', 'stg', 'prod', 'destroy'],
-            description: 'Please Select env'
-        )
+  agent any
+  stages {
+    stage('Hello') {
+      steps {
+        sh 'echo Hello World'
+        echo "Build number is ${currentBuild.number}"
+      }
     }
-    stages {
-        stage('Build') {
-            steps {
-               echo "hello java"
-            }
-        }
-    }
+  }
 }
